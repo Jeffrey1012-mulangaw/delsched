@@ -8,7 +8,7 @@
       font-family: Arial, sans-serif;
       margin: 40px;
       color: #000;
-      line-height: 1;
+      line-height: 1.6;
     }
     .center {
       text-align: center;
@@ -55,9 +55,9 @@
   </div>
 
   <div class="section">
-    <div class="row"><span class="label">Doc Number:</span> {{DocNumber}} &nbsp;&nbsp;&nbsp; <span class="label">Truck:</span> {{Truck}}</div>
-    <div class="row"><span class="label">Date:</span> {{Date}} &nbsp;&nbsp;&nbsp; <span class="label">Utility:</span> {{Utility}}</div>
-    <div class="row"><span class="label">Driver:</span> {{Driver}} &nbsp;&nbsp;&nbsp; <span class="label">Total Amount:</span> {{Total}}</div>
+    <div class="row"><span class="label">Doc Number:</span> <span id="DocNumber"></span> &nbsp;&nbsp;&nbsp; <span class="label">Truck:</span> <span id="Truck"></span></div>
+    <div class="row"><span class="label">Date:</span> <span id="Date"></span> &nbsp;&nbsp;&nbsp; <span class="label">Utility:</span> <span id="Utility"></span></div>
+    <div class="row"><span class="label">Driver:</span> <span id="Driver"></span> &nbsp;&nbsp;&nbsp; <span class="label">Total Amount:</span> <span id="Total"></span></div>
   </div>
 
   <div class="section">
@@ -71,25 +71,24 @@
       </thead>
       <tbody>
         <tr>
-          <td>{{Dest1}}</td>
-          <td>{{DRNo1}}</td>
-          <td>{{Amt1}}</td>
+          <td><span id="Dest1"></span></td>
+          <td><span id="DRNo1"></span></td>
+          <td><span id="Amt1"></span></td>
         </tr>
         <tr>
-          <td>{{Dest2}}</td>
-          <td>{{DRNo2}}</td>
-          <td>{{Amt2}}</td>
+          <td><span id="Dest2"></span></td>
+          <td><span id="DRNo2"></span></td>
+          <td><span id="Amt2"></span></td>
         </tr>
-        <!-- Add more rows as needed -->
       </tbody>
     </table>
   </div>
 
   <div class="section">
     <div class="row"><span class="label">Loading Time:</span></div>
-    <div class="row">Start: {{LoadStart}} &nbsp;&nbsp;&nbsp; End: {{LoadEnd}}</div>
+    <div class="row">Start: <span id="LoadStart"></span> &nbsp;&nbsp;&nbsp; End: <span id="LoadEnd"></span></div>
     <div class="row"><span class="label">Delivery Time:</span></div>
-    <div class="row">Start: {{DeliveryStart}} &nbsp;&nbsp;&nbsp; End: {{DeliveryEnd}}</div>
+    <div class="row">Start: <span id="DeliveryStart"></span> &nbsp;&nbsp;&nbsp; End: <span id="DeliveryEnd"></span></div>
   </div>
 
   <div class="signature">
@@ -97,13 +96,13 @@
       <div>Prepared by:</div>
       <br><br>
       <div>__________________________________</div>
-      <div>{{PreparedBy}}</div>
+      <div><span id="PreparedBy"></span></div>
     </div>
     <div>
       <div>Driver:</div>
       <br><br>
       <div>__________________________________</div>
-      <div>{{Driver}}</div>
+      <div><span id="DriverSig"></span></div>
     </div>
   </div>
 
@@ -115,5 +114,23 @@
     <div>Chief, WADD</div>
   </div>
 
+  <script>
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name) || '';
+    }
+
+    const fields = [
+      'DocNumber', 'Date', 'Truck', 'Utility', 'Driver', 'Total',
+      'Dest1', 'DRNo1', 'Amt1', 'Dest2', 'DRNo2', 'Amt2',
+      'LoadStart', 'LoadEnd', 'DeliveryStart', 'DeliveryEnd',
+      'PreparedBy', 'DriverSig'
+    ];
+
+    fields.forEach(field => {
+      const value = getQueryParam(field);
+      document.getElementById(field).textContent = decodeURIComponent(value.replace(/\+/g, ' '));
+    });
+  </script>
 </body>
 </html>
