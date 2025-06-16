@@ -55,9 +55,9 @@
   </div>
 
   <div class="section">
-    <div class="row"><span class="label">Doc Number:</span> {{DocNumber}} &nbsp;&nbsp;&nbsp; <span class="label">Truck:</span> {{Truck}}</div>
-    <div class="row"><span class="label">Date:</span> {{Date}} &nbsp;&nbsp;&nbsp; <span class="label">Utility:</span> {{Utility}}</div>
-    <div class="row"><span class="label">Driver:</span> {{Driver}} &nbsp;&nbsp;&nbsp; <span class="label">Total Amount:</span> {{Total}}</div>
+    <div class="row"><span class="label">Doc Number:</span> (DN1) &nbsp;&nbsp;&nbsp; <span class="label">Truck:</span> (DS4)</div>
+    <div class="row"><span class="label">Date:</span> (DS2) &nbsp;&nbsp;&nbsp; <span class="label">Utility:</span> (DS5)</div>
+    <div class="row"><span class="label">Driver:</span> (DS3) &nbsp;&nbsp;&nbsp; <span class="label">Total Amount:</span> (total)</div>
   </div>
 
   <div class="section">
@@ -71,25 +71,20 @@
       </thead>
       <tbody>
         <tr>
-          <td>{{Dest1}}</td>
-          <td>{{DRNo1}}</td>
-          <td>{{Amt1}}</td>
+          <td>(Dest)</td>
+          <td>(DRNO)</td>
+          <td>(Amnt)</td>
         </tr>
-        <tr>
-          <td>{{Dest2}}</td>
-          <td>{{DRNo2}}</td>
-          <td>{{Amt2}}</td>
-        </tr>
-        <!-- Add more rows as needed -->
+        <!-- Add more rows here if needed -->
       </tbody>
     </table>
   </div>
 
   <div class="section">
     <div class="row"><span class="label">Loading Time:</span></div>
-    <div class="row">Start: {{LoadStart}} &nbsp;&nbsp;&nbsp; End: {{LoadEnd}}</div>
+    <div class="row">Start: _______________ &nbsp;&nbsp;&nbsp; End: _______________</div>
     <div class="row"><span class="label">Delivery Time:</span></div>
-    <div class="row">Start: {{DeliveryStart}} &nbsp;&nbsp;&nbsp; End: {{DeliveryEnd}}</div>
+    <div class="row">Start: _______________ &nbsp;&nbsp;&nbsp; End: _______________</div>
   </div>
 
   <div class="signature">
@@ -97,13 +92,13 @@
       <div>Prepared by:</div>
       <br><br>
       <div>__________________________________</div>
-      <div>{{PreparedBy}}</div>
+      <div>(User)</div>
     </div>
     <div>
       <div>Driver:</div>
       <br><br>
       <div>__________________________________</div>
-      <div>{{Driver}}</div>
+      <div>(DS3)</div>
     </div>
   </div>
 
