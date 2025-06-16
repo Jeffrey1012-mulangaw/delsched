@@ -14,18 +14,18 @@
       text-align: center;
     }
     .section {
-      margin-top: 10px;
-    }
-    .row {
-      margin-bottom: 10px;
+      margin-top: 30px;
     }
     .label {
       font-weight: bold;
       display: inline-block;
-      width: 120px;
+      width: 140px;
+    }
+    .row {
+      margin-bottom: 10px;
     }
     .signature {
-      margin-top: 10px;
+      margin-top: 50px;
       display: flex;
       justify-content: space-between;
     }
@@ -36,10 +36,10 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
+      margin-top: 20px;
     }
     th, td {
-      border: 1px solid #000;
+      border: 1px solid black;
       padding: 6px;
       text-align: left;
     }
@@ -55,95 +55,65 @@
   </div>
 
   <div class="section">
-    <table>
-      <tr>
-        <th>Doc No</th>
-        <th>Date</th>
-        <th>Driver</th>
-        <th>Truck</th>
-        <th>Utility</th>
-        <th>Total Amount</th>
-      </tr>
-      <tr>
-        <td><span id="DocNumber"></span></td>
-        <td><span id="Date"></span></td>
-        <td><span id="Driver"></span></td>
-        <td><span id="Truck"></span></td>
-        <td><span id="Utility"></span></td>
-        <td><span id="Total"></span></td>
-      </tr>
-    </table>
+    <div class="row"><span class="label">Doc Number:</span> {{DocNumber}} &nbsp;&nbsp;&nbsp; <span class="label">Truck:</span> {{Truck}}</div>
+    <div class="row"><span class="label">Date:</span> {{Date}} &nbsp;&nbsp;&nbsp; <span class="label">Utility:</span> {{Utility}}</div>
+    <div class="row"><span class="label">Driver:</span> {{Driver}} &nbsp;&nbsp;&nbsp; <span class="label">Total Amount:</span> {{Total}}</div>
   </div>
 
   <div class="section">
     <table>
-      <tr>
-        <th>Destination</th>
-        <th>DR No</th>
-        <th>Amount</th>
-      </tr>
-      <tr>
-        <td><span id="Dest1"></span></td>
-        <td><span id="DRNO1"></span></td>
-        <td><span id="Amnt1"></span></td>
-      </tr>
-      <!-- Add more rows here if needed -->
+      <thead>
+        <tr>
+          <th>Destination</th>
+          <th>DR No.</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{Dest1}}</td>
+          <td>{{DRNo1}}</td>
+          <td>{{Amt1}}</td>
+        </tr>
+        <tr>
+          <td>{{Dest2}}</td>
+          <td>{{DRNo2}}</td>
+          <td>{{Amt2}}</td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
     </table>
   </div>
 
   <div class="section">
-    <table>
-      <tr>
-        <th>Loading Time</th>
-        <th>Delivery Time</th>
-      </tr>
-      <tr>
-        <td>Start: <span id="LoadStart"></span><br>End: <span id="LoadEnd"></span></td>
-        <td>Start: <span id="DeliveryStart"></span><br>End: <span id="DeliveryEnd"></span></td>
-      </tr>
-    </table>
+    <div class="row"><span class="label">Loading Time:</span></div>
+    <div class="row">Start: {{LoadStart}} &nbsp;&nbsp;&nbsp; End: {{LoadEnd}}</div>
+    <div class="row"><span class="label">Delivery Time:</span></div>
+    <div class="row">Start: {{DeliveryStart}} &nbsp;&nbsp;&nbsp; End: {{DeliveryEnd}}</div>
   </div>
 
   <div class="signature">
     <div>
-      <p>Prepared by:</p>
+      <div>Prepared by:</div>
       <br><br>
-      <p>__________________________________</p>
-      <p><span id="PreparedBy"></span></p>
+      <div>__________________________________</div>
+      <div>{{PreparedBy}}</div>
     </div>
     <div>
-      <p>Driver:</p>
+      <div>Driver:</div>
       <br><br>
-      <p>__________________________________</p>
-      <p><span id="DriverSig"></span></p>
+      <div>__________________________________</div>
+      <div>{{Driver}}</div>
     </div>
   </div>
 
   <div class="section" style="margin-top: 80px;">
-    <p>Approved by:</p>
-    <br>
-    <p>__________________________________</p>
-    <p>Catherine Ann D. Mirabel</p>
-    <p>Chief, WADD</p>
+    <div class="label">Approved by:</div>
+    <br><br>
+    <div>__________________________________</div>
+    <div>Catherine Ann D. Mirabel</div>
+    <div>Chief, WADD</div>
   </div>
 
-  <script>
-    function getQueryParam(name) {
-      const params = new URLSearchParams(window.location.search);
-      return params.get(name) || '';
-    }
-
-    const fields = [
-      'DocNumber', 'Date', 'Driver', 'Truck', 'Utility', 'Total',
-      'Dest1', 'DRNO1', 'Amnt1',
-      'LoadStart', 'LoadEnd', 'DeliveryStart', 'DeliveryEnd',
-      'PreparedBy', 'DriverSig'
-    ];
-
-    fields.forEach(field => {
-      const value = getQueryParam(field);
-      document.getElementById(field).textContent = decodeURIComponent(value.replace(/\+/g, ' '));
-    });
-  </script>
 </body>
 </html>
