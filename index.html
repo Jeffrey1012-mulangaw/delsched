@@ -5,136 +5,141 @@
   <title>Delivery Schedule</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      color: #000;
-      line-height: 1.6;
+      font-family: Tahoma, sans-serif;
+      font-size: 8pt;
+      margin: 10px;
     }
-    .center {
+    h1, h2, h3 {
       text-align: center;
+      margin: 2px 0;
     }
-    .section {
-      margin-top: 30px;
+    .info-table {
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border-collapse: collapse;
     }
-    .label {
+    .info-table td {
+      padding: 2px 4px;
+    }
+    .section-label {
       font-weight: bold;
-      display: inline-block;
-      width: 140px;
+      margin-top: 10px;
+      margin-bottom: 4px;
     }
-    .row {
+    table.delivery-table {
+      border-collapse: collapse;
+      width: 100%;
       margin-bottom: 10px;
     }
-    .signature {
-      margin-top: 50px;
+    .delivery-table th, .delivery-table td {
+      border: 1px solid #000;
+      padding: 2px 4px;
+      text-align: left;
+    }
+    .signature-block {
+      margin-top: 30px;
+    }
+    .signature-section {
       display: flex;
       justify-content: space-between;
     }
-    .signature div {
-      text-align: center;
+    .signature {
       width: 45%;
+      text-align: center;
     }
-    table {
+    .signature-line {
+      margin-top: 40px;
+      border-top: 1px solid #000;
       width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    th, td {
-      border: 1px solid black;
-      padding: 6px;
-      text-align: left;
     }
   </style>
 </head>
 <body>
 
-  <div class="center">
-    <h2>PROCUREMENT SERVICE</h2>
-    <p>Department of Budget and Management</p>
-    <p>WAREHOUSING AND DELIVERY DIVISION</p>
-    <h2>DELIVERY SCHEDULE</h2>
-  </div>
+<h2>PROCUREMENT SERVICE</h2>
+<h3>Department of Budget and Management</h3>
+<h3>WAREHOUSING AND DELIVERY DIVISION</h3>
+<h2 style="margin-top: 20px;">DELIVERY SCHEDULE</h2>
 
-  <div class="section">
-    <div class="row"><span class="label">Doc Number:</span> <span id="DocNumber"></span> &nbsp;&nbsp;&nbsp; <span class="label">Truck:</span> <span id="Truck"></span></div>
-    <div class="row"><span class="label">Date:</span> <span id="Date"></span> &nbsp;&nbsp;&nbsp; <span class="label">Utility:</span> <span id="Utility"></span></div>
-    <div class="row"><span class="label">Driver:</span> <span id="Driver"></span> &nbsp;&nbsp;&nbsp; <span class="label">Total Amount:</span> <span id="Total"></span></div>
-  </div>
+<table class="info-table">
+  <tr>
+    <td><strong>Doc No:</strong> <span id="docno">________</span></td>
+    <td><strong>Date:</strong> <span id="date">________</span></td>
+    <td><strong>Driver:</strong> <span id="driver">________</span></td>
+    <td><strong>Utility:</strong> <span id="utility">________</span></td>
+    <td><strong>Total:</strong> <span id="total">________</span></td>
+  </tr>
+</table>
 
-  <div class="section">
-    <table>
-      <thead>
-        <tr>
-          <th>Destination</th>
-          <th>DR No.</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span id="Dest1"></span></td>
-          <td><span id="DRNo1"></span></td>
-          <td><span id="Amt1"></span></td>
-        </tr>
-        <tr>
-          <td><span id="Dest2"></span></td>
-          <td><span id="DRNo2"></span></td>
-          <td><span id="Amt2"></span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="section-label">Delivery Table</div>
+<table class="delivery-table" id="delivery-table">
+  <thead>
+    <tr>
+      <th>DR No</th>
+      <th>Destination</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
 
-  <div class="section">
-    <div class="row"><span class="label">Loading Time:</span></div>
-    <div class="row">Start: <span id="LoadStart"></span> &nbsp;&nbsp;&nbsp; End: <span id="LoadEnd"></span></div>
-    <div class="row"><span class="label">Delivery Time:</span></div>
-    <div class="row">Start: <span id="DeliveryStart"></span> &nbsp;&nbsp;&nbsp; End: <span id="DeliveryEnd"></span></div>
-  </div>
+<table class="info-table">
+  <tr>
+    <td><strong>Lading Time:</strong> Start: ________ End: ________</td>
+    <td><strong>Delivery Time:</strong> Start: ________ End: ________</td>
+  </tr>
+</table>
 
-   <div class="section">
-     <div class="row"><span class="label">Details:</span> <span id="LINEITEMS"></span> </div>
-  </div>
-
+<div class="signature-section">
   <div class="signature">
-    <div>
-      <div>Prepared by:</div>
-      <br><br>
-      <div>__________________________________</div>
-      <div><span id="PreparedBy"></span></div>
-    </div>
-    <div>
-      <div>Driver:</div>
-      <br><br>
-      <div>__________________________________</div>
-      <div><span id="DriverSig"></span></div>
-    </div>
+    <div>Prepared by:</div>
+    <div class="signature-line"></div>
+    <div>(User / DS3)</div>
   </div>
-
-  <div class="section" style="margin-top: 80px;">
-    <div class="label">Approved by:</div>
-    <br><br>
-    <div>__________________________________</div>
-    <div>Catherine Ann D. Mirabel</div>
-    <div>Chief, WADD</div>
+  <div class="signature">
+    <div>Driver:</div>
+    <div class="signature-line"></div>
   </div>
+</div>
 
-  <script>
-    function getQueryParam(name) {
-      const params = new URLSearchParams(window.location.search);
-      return params.get(name) || '';
-    }
+<div class="signature-block">
+  <div>Approved by:</div>
+  <div class="signature-line" style="width: 50%;"></div>
+  <div><strong>Catherine Ann D. Mirabel</strong><br>Chief, WADD</div>
+</div>
 
-    const fields = [
-      'DocNumber', 'Date', 'Truck', 'Utility', 'Driver', 'Total',
-      'Dest1', 'DRNo1', 'Amt1', 'Dest2', 'DRNo2', 'Amt2',
-      'LoadStart', 'LoadEnd', 'DeliveryStart', 'DeliveryEnd',
-      'PreparedBy', 'DriverSig'
-    ];
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
 
-    fields.forEach(field => {
-      const value = getQueryParam(field);
-      document.getElementById(field).textContent = decodeURIComponent(value.replace(/\+/g, ' '));
+  // Set dynamic values
+  document.getElementById("docno").textContent = urlParams.get("docno") || "________";
+  document.getElementById("driver").textContent = urlParams.get("driver") || "________";
+  document.getElementById("utility").textContent = urlParams.get("utility") || "________";
+  document.getElementById("date").textContent = urlParams.get("date") || "________";
+  document.getElementById("total").textContent = urlParams.get("total") || "________";
+
+  // Load delivery table rows from @-separated data
+  const rawData = urlParams.get("data") || "";
+  const items = rawData.split("@");
+  const tableBody = document.querySelector("#delivery-table tbody");
+
+  for (let i = 0; i < items.length; i += 3) {
+    const row = document.createElement("tr");
+
+    const drNo = items[i]?.trim() || "";
+    const destination = items[i + 1]?.trim() || "";
+    const amount = items[i + 2]?.trim() || "";
+
+    [drNo, destination, amount].forEach(text => {
+      const cell = document.createElement("td");
+      cell.textContent = text;
+      row.appendChild(cell);
     });
-  </script>
+
+    tableBody.appendChild(row);
+  }
+</script>
+
 </body>
 </html>
