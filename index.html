@@ -24,7 +24,7 @@
     .info-table td {
       padding: 2px 4px;
       vertical-align: top;
-      text-align: left; /* Ensures left alignment */
+      text-align: left;
     }
     .section-label {
       font-weight: bold;
@@ -47,9 +47,10 @@
     .signature-section {
       display: flex;
       justify-content: space-between;
+      gap: 10px;
     }
     .signature {
-      width: 45%;
+      width: 30%;
       text-align: center;
     }
     .signature-line {
@@ -68,11 +69,7 @@
 
 <!-- Aligned Table 1: Doc Info -->
 <table class="info-table">
-  <colgroup>
-    <col>
-    <col>
-    <col>
-  </colgroup>
+  <colgroup><col><col><col></colgroup>
   <tr>
     <td><strong>Doc No:</strong> <span id="docno">________</span></td>
     <td><strong>Date:</strong> <span id="date">________</span></td>
@@ -82,11 +79,7 @@
 
 <!-- Aligned Table 2: Truck Info -->
 <table class="info-table">
-  <colgroup>
-    <col>
-    <col>
-    <col>
-  </colgroup>
+  <colgroup><col><col><col></colgroup>
   <tr>
     <td><strong>Truck:</strong> <span id="truck">________</span></td>
     <td><strong>Utility:</strong> <span id="utility">________</span></td>
@@ -108,29 +101,32 @@
 
 <table class="info-table">
   <tr>
-    <td><strong>L0ading Time:</strong> Start: ________ End: ________</td>
+    <td><strong>Lading Time:</strong> Start: ________ End: ________</td>
     <td><strong>Delivery Time:</strong> Start: ________ End: ________</td>
   </tr>
 </table>
 
+<!-- Signature Section -->
 <div class="signature-section">
   <div class="signature">
     <div>Prepared by:</div>
-    <div class="signature-line" style="width: 25%;"></div>
-    <div>Signature over printed name</div>
+    <div class="signature-line"></div>
+    <div id="preparedName">(User / DS3)</div>
   </div>
   <div class="signature">
-    <div>Driver Signature:</div>
-    <div class="signature-line" style="width: 25%;"></div>
+    <div>Driver:</div>
+    <div class="signature-line"></div>
+    <div id="driverName">__________________</div>
   </div>
   <div class="signature">
-    <div>Checker</div>
-    <div class="signature-line" style="width: 25%;"></div>
+    <div>Checker:</div>
+    <div class="signature-line"></div>
+    <div id="checkerName">__________________</div>
   </div>
 </div>
 
-<div class="signature-section">
-  <div class="signature">
+<!-- Approval Block -->
+<div class="signature-block">
   <div>Approved by:</div>
   <div class="signature-line"></div>
   <div><strong>Catherine Ann D. Mirabel</strong><br>Chief, WADD</div>
@@ -139,15 +135,20 @@
 <script>
   const urlParams = new URLSearchParams(window.location.search);
 
-  // Set dynamic values
+  // Dynamic header info
   document.getElementById("docno").textContent = urlParams.get("docno") || "________";
+  document.getElementById("date").textContent = urlParams.get("date") || "________";
   document.getElementById("driver").textContent = urlParams.get("driver") || "________";
   document.getElementById("truck").textContent = urlParams.get("truck") || "________";
   document.getElementById("utility").textContent = urlParams.get("utility") || "________";
-  document.getElementById("date").textContent = urlParams.get("date") || "________";
   document.getElementById("total").textContent = urlParams.get("total") || "________";
 
-  // Load delivery table rows from @-separated data
+  // Signature names
+  document.getElementById("preparedName").textContent = urlParams.get("prepared") || "(User / DS3)";
+  document.getElementById("driverName").textContent = urlParams.get("driver") || "__________________";
+  document.getElementById("checkerName").textContent = urlParams.get("checker") || "__________________";
+
+  // Delivery table data
   const rawData = urlParams.get("data") || "";
   const items = rawData.split("@");
   const tableBody = document.querySelector("#delivery-table tbody");
