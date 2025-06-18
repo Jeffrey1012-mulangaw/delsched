@@ -67,6 +67,7 @@
     <td><strong>Doc No:</strong> <span id="docno">________</span></td>
     <td><strong>Date:</strong> <span id="date">________</span></td>
     <td><strong>Driver:</strong> <span id="driver">________</span></td>
+    <td><strong>Truck:</strong> <span id="truck">________</span></td>
     <td><strong>Utility:</strong> <span id="utility">________</span></td>
     <td><strong>Total:</strong> <span id="total">________</span></td>
   </tr>
@@ -115,6 +116,7 @@
   // Set dynamic values
   document.getElementById("docno").textContent = urlParams.get("docno") || "________";
   document.getElementById("driver").textContent = urlParams.get("driver") || "________";
+  document.getElementById("truck").textContent = urlParams.get("truck") || "________";
   document.getElementById("utility").textContent = urlParams.get("utility") || "________";
   document.getElementById("date").textContent = urlParams.get("date") || "________";
   document.getElementById("total").textContent = urlParams.get("total") || "________";
